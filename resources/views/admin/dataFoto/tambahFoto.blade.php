@@ -7,54 +7,54 @@
                   <div class="card-header">
                     <h4>Form Tambah Foto</h4>
                   </div>
+
+                  <form action="/foto/tambahFoto" method="post">
+                  @csrf
                   <div class="card-body">
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul Foto</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
+                        <input name="JudulFoto" type="text" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi Foto</label>
                       <div class="col-sm-12 col-md-7">
-                        <textarea class="summernote"></textarea>
+                        <textarea name="DeskripsiFoto" class="summernote"></textarea>
                       </div>
                     </div>
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Unggah</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="date" class="form-control">
+                        <input name="TanggalUnggah" type="date" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Lokasi File</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="file" class="form-control">
+                        <input name="LokasiFile" type="file" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Album ID / Category</label>
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilih Album / Category</label>
                       <div class="col-sm-12 col-md-7">
-                        <select class="form-control selectric">
-                          <option>Tech</option>
-                          <option>News</option>
-                          <option>Political</option>
+                        <select name="AlbumID" id="AlbumID" class="form-control selectric">
+                          <option value="">Pilih Album</option>
+                          @foreach ($album as $album)
+                            <option value="{{$album->AlbumID}}"> {{ $album->NamaAlbum }} </option>
+                          @endforeach
                         </select>
-                      </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">User ID</label>
-                      <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                       <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Publish</button>
+                      <a href="/dataFoto">
+                        <button type="submit" class="btn btn-primary">Publish</button></a>
                       </div>
                     </div>
                   </div>
+                  </form>
                 </div>
 
                 </div>

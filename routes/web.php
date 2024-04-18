@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::get('/dataFoto', function () {
 Route::get('/tambahFoto', function () {
     return view('admin/dataFoto/tambahFoto');
 });
+
+
 Route::get('/dataAlbum', function () {
     return view('admin/dataAlbum/dataAlbum');
 });
@@ -48,5 +52,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/album/tambahAlbum', [AlbumController::class,'create']);
+Route::post('/album/tambahAlbum', [AlbumController::class,'store']);
+
+Route::get('/foto/tambahFoto', [FotoController::class,'create']);
+Route::post('/foto/tambahFoto', [FotoController::class,'store']);
+
+// Route::get('/foto/tambahFoto', [FotoController::class,'create']);
+// Route::post('/foto/tambahFoto', [FotoController::class,'store']);
+// Route::get('/album/{AlbumID}/dataAlbum', [AlbumController::class,'show']); 
+
+Route::get('/dataAlbum', [AlbumController::class, 'index']);
+Route::get('/dataFoto', [FotoController::class, 'index']);
+//Route::resource('/dataFoto', FotoController::class);
 
 require __DIR__.'/auth.php';
