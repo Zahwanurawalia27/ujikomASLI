@@ -6,13 +6,26 @@
 <div class="buttonC">
 <p align="center">Categories</p>
 	<br>
-	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/action.png') }}" alt="" style="height: 35px;"> Action </a>  </button>
+	<!-- <button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/action.png') }}" alt="" style="height: 35px;"> Action </a>  </button>
 	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/thriller.png') }}" alt="" style="height: 35px;"> Thriller </a> </button>
 	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/romance.png') }}" alt="" style="height: 35px;"> Romance </a> </button>
 	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/comedi.png') }}" alt="" style="height: 35px;"> Comedy </a> </button>
 	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/family.png') }}" alt="" style="height: 35px;"> Family </a> </button>
 	<button type="button" class="btn btn-secondary" style="margin-left: 60px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/makjang.png') }}" alt="" style="height: 35px;"> Drama </a> </button>
-	<button type="button" class="btn btn-secondary" style="margin-left: 5px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/horor.png') }}" alt="" style="height: 35px;"> Horror </a> </button>
+	<button type="button" class="btn btn-secondary" style="margin-left: 5px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/horor.png') }}" alt="" style="height: 35px;"> Horror </a> </button> -->
+
+
+	<div class="col-sm-12 col-md-7" align="center">
+                        <select name="AlbumID" id="AlbumID" class="form-control selectric" required >
+                          <option value="">Categorie</option>
+                          @foreach ($album as $album)
+                            <option value="{{$album->AlbumID}}"> {{ $album->NamaAlbum }} </option>
+                          @endforeach
+                        </select>
+                      </div>
+
+	
+
 </div>
 <!-- end categories -->
     	

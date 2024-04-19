@@ -25,12 +25,15 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="/index" class="menu--active">Home</a></li>
-					<li><a href="/about">About</a></li>
+					<li><a href="/about">Category</a></li>
 					<li><a href="/gallery">Gallery</a></li>
-					<li><a href="/blog.html">Blog</a>
+					<li><a href="/blog.html">Category</a>
 						<ul class="sub__menu">
 							<li><a href="./blog-single.html">Blog Single</a></li>
 						</ul>
+					</li>
+					<li>
+	
 					</li>
 					
 				</ul>

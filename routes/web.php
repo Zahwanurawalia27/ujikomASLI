@@ -67,6 +67,7 @@ Route::get('/dataFoto', [FotoController::class, 'index']);
 
 
 Route::get('/gallery', [GalleryController::class, 'index']);
+Route::get('/index', [AlbumController::class, 'category'])->name('index');
 
 
 

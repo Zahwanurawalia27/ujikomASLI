@@ -62,6 +62,12 @@ class AlbumController extends Controller
 
     }
 
+    public function category(Album $album)
+    {
+        $album = Album::all();
+        return view('index', compact('album'))->with('album', $album);;
+    }
+
     /**
      * Display the specified resource.
      *

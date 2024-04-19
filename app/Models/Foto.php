@@ -22,7 +22,12 @@ class Foto extends Model
 
     public function album()
     {
-        return $this->belongsTo(Album::class);
+        return $this->belongsTo(Album::class, 'AlbumID', 'AlbumID');
+    }
+
+    public function likefotos()
+    {
+        return $this->hasMany(Foto::class);
     }
 
     // public function komentarfoto()
