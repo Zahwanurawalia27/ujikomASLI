@@ -16,6 +16,7 @@ class GalleryController extends Controller
     public function index()
     {
         $foto = Foto::join('albums', 'albums.AlbumID', '=', 'fotos.AlbumID')->get();
+        $foto = Foto::join('users', 'users.UserID', '=', 'fotos.UserID')->get();
         return view('gallery', compact('foto'));
         //return view('gallery', ['foto' => $foto]);
     }

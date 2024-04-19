@@ -15,18 +15,19 @@
 	<button type="button" class="btn btn-secondary" style="margin-left: 5px;"> <a href="#" class="tulisanB"> <img src="{{ asset ('assets/img/categorie/horor.png') }}" alt="" style="height: 35px;"> Horror </a> </button> -->
 
 
-	<div class="col-sm-12 col-md-7" align="center">
+				<div class="row justify-content-center">
+					<div class="col-sm-12 col-md-7 d-flex justify-content-center"> 
                         <select name="AlbumID" id="AlbumID" class="form-control selectric" required >
-                          <option value="">Categorie</option>
+                          <option value="">Macam-macam genre yang tersedia di dalam website : </option>
                           @foreach ($album as $album)
-                            <option value="{{$album->AlbumID}}"> {{ $album->NamaAlbum }} </option>
+                            <option value="{{$album->AlbumID}}"> - {{ $album->NamaAlbum }} </option>
                           @endforeach
                         </select>
                       </div>
+					</div>
+				</div>
 
-	
 
-</div>
 <!-- end categories -->
     	
 <!-- Hero Section -->
