@@ -18,16 +18,24 @@
                         <th>Tanggal Unggah</th>
                         <th>Lokasi File</th>
                         <th>Album</th>
+                        <th>Aksi</th>
                       </tr>
                       
                       @foreach ($foto as $foto)
                         <tr>
-                          <th>{{ $loop->iteration }}</th>
-                          <th>{{ $foto->JudulFoto }}</th>
-                          <th>{{ $foto->DeskripsiFoto }}</th>
-                          <th>{{ $foto->TanggalUnggah }}</th>
-                          <th>{{ $foto->LokasiFile }}</th>
-                          <th>{{ $foto->NamaAlbum }}</th>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $foto->JudulFoto }}</td>
+                          <td>{{ $foto->DeskripsiFoto }}</td>
+                          <td>{{ $foto->TanggalUnggah }}</td>
+                          <td>{{ $foto->LokasiFile }}</td>
+                          <td>{{ $foto->NamaAlbum }}</td>
+                          <td>
+                            <form action="/dataFoto/{{$foto->FotoID}}" method="post">
+                                @method('delete');
+                                @csrf
+                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin akan dihapus?')">hapus</button>
+                            </form>
+                          </td>
                         </tr>
                       @endforeach
 

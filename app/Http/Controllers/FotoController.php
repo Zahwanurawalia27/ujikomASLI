@@ -114,8 +114,12 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Foto $foto)
+    public function destroy( $id)
     {
-        //
+        $foto= Foto::where('FotoID','=',$id)->first();
+        $foto->delete();
+        // dd($foto);
+
+        return redirect('/dataFoto')->with('success', 'Foto Berhasil Dihapus!');
     }
 }

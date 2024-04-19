@@ -64,6 +64,7 @@ Route::get('/dataAlbum', [AlbumController::class, 'index']);
 Route::get('/foto/tambahFoto', [FotoController::class,'create']);
 Route::post('/foto/tambahFoto', [FotoController::class,'store']);
 Route::get('/dataFoto', [FotoController::class, 'index']);
+Route::delete('/dataFoto/{id}', [FotoController::class, 'destroy']);
 
 
 Route::get('/gallery', [GalleryController::class, 'index']);
