@@ -3,7 +3,7 @@
 @section('content')
               <div class="card">
                 <div class="card-header">
-                  <h4>Invoices</h4>
+                  <h4>Table Data Foto</h4>
                   <div class="card-header-action">
                     <a href="/foto/tambahFoto" class="btn btn-danger">Tambah Foto <i class="fas fa-chevron-right"></i></a>
                   </div>

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,18 +55,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// crud album
 Route::get('/album/tambahAlbum', [AlbumController::class,'create']);
 Route::post('/album/tambahAlbum', [AlbumController::class,'store']);
+Route::get('/dataAlbum', [AlbumController::class, 'index']);
 
+// crud foto
 Route::get('/foto/tambahFoto', [FotoController::class,'create']);
 Route::post('/foto/tambahFoto', [FotoController::class,'store']);
+Route::get('/dataFoto', [FotoController::class, 'index']);
+
+
+Route::get('/gallery', [GalleryController::class, 'index']);
+
+
 
 // Route::get('/foto/tambahFoto', [FotoController::class,'create']);
 // Route::post('/foto/tambahFoto', [FotoController::class,'store']);
 // Route::get('/album/{AlbumID}/dataAlbum', [AlbumController::class,'show']); 
 
-Route::get('/dataAlbum', [AlbumController::class, 'index']);
-Route::get('/dataFoto', [FotoController::class, 'index']);
 //Route::resource('/dataFoto', FotoController::class);
 
 require __DIR__.'/auth.php';

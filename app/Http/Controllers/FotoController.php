@@ -37,7 +37,7 @@ class FotoController extends Controller
         $album = Album::all(); // Ambil semua data album dari model Album
         return view('admin.dataFoto.tambahFoto', ['album' => $album]); // Kirim data album ke tampilan dengan nama variabel $albums
 
-        
+
     }
 
     /**
@@ -48,25 +48,28 @@ class FotoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //dd($request);
 
         $foto = new Foto;
         $foto->JudulFoto = $request->JudulFoto;
         $foto->DeskripsiFoto = $request->DeskripsiFoto;
         $foto->TanggalUnggah = $request->TanggalUnggah;
-        $foto->LokasiFile = $request->LokasiFile;
+        // $foto->LokasiFile = $request->LokasiFile;
         $foto->AlbumID = $request->AlbumID;
         $foto['UserID'] = auth()->user()->UserID;
 
         if ($request->hasFile('LokasiFile')) {
             $files = $request->file('LokasiFile');
-            $path = storage_path('app/public/images/photo-images');
-            $files_name = date('Ymd') . '_' . $files->getClientOriginalName();
-            $files->storeAs('image/photo-images', $files_name);
-            $foto->LokasiFile = $files_name;
-        }
-       
+            $files_name = $foto['UserID'] . '-' . now()->timestamp . '.' . $files->getClientOriginalExtension();
+            // dd($files_name);
 
+            $files->storeAs('public/images/photo-images ', $files_name);
+            //dd($files);
+            // $foto->LokasiFile = $files_name;
+        }
+
+
+        $foto->LokasiFile = $files_name;
         $foto->save();
         return redirect('/dataFoto')->with('success', 'Foto Baru Telah Ditambahkan!');
     }

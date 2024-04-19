@@ -5,68 +5,27 @@
 	<div class="gallery__page">
 		<div class="gallery__warp">
 			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="{{ asset ('assets/img/gallery/StrongWomenDoBongson.jpg') }}" data-fresco-group="gallery">
-						<img src="{{ asset ('assets/img/gallery/StrongWomenDoBongson.jpg') }}" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="{{ asset ('assets/img/gallery/theGlory.jpg') }}" data-fresco-group="gallery">
-						<img src="{{ asset ('assets/img/gallery/theGlory.jpg') }}" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="{{ asset ('assets/img/gallery/thePenthouse.jpg') }}" data-fresco-group="gallery">
-						<img src="{{ asset ('assets/img/gallery/thePenthouse.jpg') }}" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="{{ asset ('assets/img/gallery/squidGame.jpg') }}" data-fresco-group="gallery">
-						<img src="{{ asset ('assets/img/gallery/squidGame.jpg') }}" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="{{ asset ('assets/img/gallery/taxiDriver.jpg') }}" data-fresco-group="gallery">
-						<img src="{{ asset ('assets/img/gallery/taxiDriver.jpg') }}" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/6.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/6.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/7.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/7.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/8.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/8.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/9.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/9.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/10.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/10.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/11.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/11.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/12.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/12.jpg" alt="">
-					</a>
-				</div>
 
-				
+				<div class="row pb-3">
+                    @foreach ($foto as $foto)
+                    <div class="col-lg-4 mb-4">
+                      <div class="card border-0 shadow-sm mb-2">
+                        <center>{{$foto->JudulFoto}}</center>
+                        <img class="card-img-top mb-2" src="{{asset('storage/images/photo-images/'.$foto->LokasiFile)}}" alt="" style="width: 100%;" />
+                        <div class="card-body bg-light text-center p-4">
+                          <h4>{{$foto->DeskripsiFoto}}</h4>
+                          <div class="d-flex justify-content-center mb-3">
+                            <small class="mr-3"><i class="fa fa-user text-primary" value="{{$foto->UserID}}"></i>{{ $foto->Username}}</small>
+                            <small class="mr-3"><i class="fa fa-folder text-primary"></i> Web Design</small>
+                            <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
+                          </div>
+                          <p>{{ $foto->DeskripsiFoto }}</p>
+                          <a href="" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+                </div>
 
 			</div>
 		</div>
