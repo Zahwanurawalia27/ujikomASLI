@@ -25,10 +25,25 @@ class Foto extends Model
         return $this->belongsTo(Album::class, 'AlbumID', 'AlbumID');
     }
 
-    public function likefotos()
+    public function likefotoss()
     {
-        return $this->hasMany(Foto::class);
+        return $this->hasMany(LikeFoto::class, 'FotoID');
     }
+
+    public function likedByUser($userId)
+    {
+        return $this->likefotoss()->where('UserID', $userId)->exists();
+    }
+
+    public function likesCount()
+    {
+        return $this->likefotoss()->count();
+    }
+
+    // public function likefotoss()
+    // {
+    //     return $this->hasMany(Foto::class);
+    // }
 
     // public function komentarfoto()
     // {

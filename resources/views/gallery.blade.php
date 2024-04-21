@@ -19,7 +19,17 @@
                             <small class="mr-3"><i class="fa fa-user text-primary" value="{{$foto->UserID}}"></i> {{ $foto->NamaLengkap}} </small>
                             <small class="mr-3"><i class="fa fa-folder text-primary"></i> {{ $foto->album->NamaAlbum }} </small>
                             <!-- <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small> -->
-                            <small class="mr-3"><i class="fa fa-regular fa-heart"></i></small>
+                            <!-- <small class="mr-3"><i class="fa fa-regular fa-heart"></i></small> -->
+                            <!-- <small class="mr-3"><a href="{{ route('like.toggle', $foto->FotoID) }}"><i class="fa fa-heart {{ $foto->likedByUser(auth()->id()) ? 'text-danger' : 'text-muted' }}"></i></a></small> -->
+                            <form action="{{ route('like.toggle', $foto->FotoID) }}" method="post">
+                                @csrf
+                                <button type="submit">
+                                    <i class="fa fa-heart"></i>
+                                    {{ $foto->likesCount() }}
+                                </button>
+                            </form>
+
+                  
                             
                           </div>
                           <p>{{ $foto->DeskripsiFoto }}</p>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikefotosTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -12,6 +12,16 @@ class CreateLikefotosTable extends Migration
      * @return void
      */
     public function up()
+    {
+        Schema::dropIfExists('likefotos');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
         Schema::create('likefotos', function (Blueprint $table) {
             $table->bigIncrements('KomentarID');
@@ -23,17 +33,5 @@ class CreateLikefotosTable extends Migration
             $table->date('TanggalKomentar');
             $table->timestamps();
         });
-
-       
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('likefotos');
-    }
-}
+};

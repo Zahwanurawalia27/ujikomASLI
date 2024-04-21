@@ -73,6 +73,10 @@ Route::get('/dataFoto/editFoto/{id}', [FotoController::class, 'edit']);
 Route::put('/dataFoto/update/{id}', [FotoController::class, 'update']);
 
 
+// like foto
+Route::post('/like/{foto}', [FotoController::class, 'toggleLike'])->name('like.toggle');
+
+
 Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/index', [AlbumController::class, 'category'])->name('index');
 

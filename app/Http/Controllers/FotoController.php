@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LikeFoto;
 use App\Models\Album;
 use App\Models\Foto;
 use Illuminate\Http\Request;
@@ -138,4 +139,27 @@ class FotoController extends Controller
 
         return redirect('/dataFoto')->with('success', 'Foto Berhasil Dihapus!');
     }
+
+    public function toggleLike(Foto $foto)
+    {
+        $userId = auth()->id();
+
+        // Cek apakah pengguna sudah "like" pada foto ini
+        $isLiked = $foto->likedByUser($userId);
+
+        if ($isLiked) {
+            // Jika pengguna sudah "like", hapus entri "like" dari tabel likefotoss
+            LikeFoto::where('FotoID', $foto->FotoID)->where('UserID', $userId)->delete();
+        } else {
+            // Jika pengguna belum "like", tambahkan entri "like" ke tabel likefotoss
+            LikeFoto::create([
+                'FotoID' => $foto->FotoID,
+                'UserID' => $userId,
+                'TanggalLike' => now(),
+            ]);
+        }
+
+        return back();
+    }
+    
 }
