@@ -18,7 +18,8 @@
                         <th>Tanggal Unggah</th>
                         <th>Lokasi File</th>
                         <th>Album</th>
-                        <th>Aksi</th>
+                        <th>Hapus</th>
+                        <th>Edit</th>
                       </tr>
                       
                       @foreach ($foto as $foto)
@@ -31,10 +32,15 @@
                           <td>{{ $foto->NamaAlbum }}</td>
                           <td>
                             <form action="/dataFoto/{{$foto->FotoID}}" method="post">
-                                @method('delete');
+                                @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0" onclick="return confirm('Yakin akan dihapus?')">hapus</button>
                             </form>
+                          </td>
+                          <td>
+                            <a href="/dataFoto/editFoto/{{$foto->FotoID}}">
+                              <button class="badge bg-primary border-0">Edit</button>
+                            </a>
                           </td>
                         </tr>
                       @endforeach

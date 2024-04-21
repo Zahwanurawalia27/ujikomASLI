@@ -35,6 +35,9 @@ Route::get('/dataFoto', function () {
 Route::get('/tambahFoto', function () {
     return view('admin/dataFoto/tambahFoto');
 });
+Route::get('/editFoto', function () {
+    return view('admin/dataFoto/editFoto');
+});
 
 
 Route::get('/dataAlbum', function () {
@@ -43,6 +46,7 @@ Route::get('/dataAlbum', function () {
 Route::get('/tambahAlbum', function () {
     return view('admin/dataAlbum/tambahAlbum');
 });
+
 
 
 Route::get('/dashboardAdmin', function () {
@@ -65,6 +69,8 @@ Route::get('/foto/tambahFoto', [FotoController::class,'create']);
 Route::post('/foto/tambahFoto', [FotoController::class,'store']);
 Route::get('/dataFoto', [FotoController::class, 'index']);
 Route::delete('/dataFoto/{id}', [FotoController::class, 'destroy']);
+Route::get('/dataFoto/editFoto/{id}', [FotoController::class, 'edit']);
+Route::put('/dataFoto/update/{id}', [FotoController::class, 'update']);
 
 
 Route::get('/gallery', [GalleryController::class, 'index']);

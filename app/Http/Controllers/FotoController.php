@@ -91,9 +91,11 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Foto $foto)
+    public function edit($id)
     {
-        //
+        $foto = Foto::where('FotoID',$id)->first();
+        $albums = Album::all(); // ambil semua album
+        return view('admin.dataFoto.editFoto', compact('foto', 'albums'));
     }
 
     /**
@@ -103,9 +105,23 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Foto $foto)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'JudulFoto' => 'required', // Menyatakan bahwa JudulFoto diperlukan
+            'DeskripsiFoto' => 'required',
+            'TanggalUnggah' => 'required',
+            'AlbumID' => 'required',
+        ]);
+
+        $foto = Foto::find($id);
+        $foto->JudulFoto = $request->JudulFoto;
+        $foto->DeskripsiFoto = $request->DeskripsiFoto;
+        $foto->TanggalUnggah = $request->TanggalUnggah;
+        $foto->AlbumID = $request->AlbumID;
+        $foto->save();
+    
+        return redirect('/dataFoto')->with('success', 'Foto berhasil diperbarui!');
     }
 
     /**
