@@ -38,6 +38,9 @@ Route::get('/tambahFoto', function () {
 Route::get('/editFoto', function () {
     return view('admin/dataFoto/editFoto');
 });
+Route::get('/detailFoto', function () {
+    return view('admin/dataFoto/detail');
+});
 
 
 Route::get('/dataAlbum', function () {
@@ -75,6 +78,14 @@ Route::put('/dataFoto/update/{id}', [FotoController::class, 'update']);
 
 // like foto
 Route::post('/like/{foto}', [FotoController::class, 'toggleLike'])->name('like.toggle');
+
+// komentar foto
+//Route::post('/foto/{id}/comment', [FotoController::class, 'storeComment'])->name('foto.comment');
+//Route::get('/gallery/{foto}', [FotoController::class, 'show'])->name('gallery.show');
+//Route::get('/gallery/{foto}', [FotoController::class, 'komentar'])->name('foto.komentar');
+Route::post('/gallery/{foto}/comment', [FotoController::class, 'storeComment'])->name('foto.comment');
+Route::get('/detail/{foto}', [FotoController::class, 'show'])->name('foto.show');
+
 
 
 Route::get('/gallery', [GalleryController::class, 'index']);

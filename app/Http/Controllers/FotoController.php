@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KomentarFoto;
 use App\Models\LikeFoto;
 use App\Models\Album;
 use App\Models\Foto;
@@ -81,9 +82,12 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function show(Foto $foto)
+    public function show($id)
     {
-        //
+        $foto = Foto::find($id);
+        $komentar = KomentarFoto::where('FotoID', $id)->get();
+        //$foto = Foto::findOrFail($id);      
+        return view('admin.dataFoto.detail', compact('foto', 'komentar'));
     }
 
     /**
@@ -160,6 +164,31 @@ class FotoController extends Controller
         }
 
         return back();
+    }
+
+    public function storeComment(Request $request, $id)
+    {
+        $request->validate([
+            'IsiKomentar' => 'required',
+        ]);
+
+        KomentarFoto::create([
+            'FotoID' => $id,
+            'UserID' => auth()->id(),
+            'IsiKomentar' => $request->IsiKomentar,
+            'TanggalKomentar' => now(),
+        ]);
+
+        return back()->with('success', 'Komentar berhasil ditambahkan!');
+    }
+
+    public function komentar(Foto $foto)
+    {
+        // $foto = Foto::findOrFail($id);
+        // $komentars = KomentarFoto::where('FotoID', $id)->get();
+        // return view('gallery.show', compact('foto', 'komentars'));
+        $komentar = KomentarFoto::where('FotoID', $foto->FotoID)->get();
+        return view('gallery', compact('foto', 'komentar'));
     }
     
 }

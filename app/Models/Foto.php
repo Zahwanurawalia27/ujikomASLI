@@ -17,7 +17,7 @@ class Foto extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'UserID');
     }
 
     public function album()
@@ -38,6 +38,16 @@ class Foto extends Model
     public function likesCount()
     {
         return $this->likefotoss()->count();
+    }
+
+    public function komentars()
+    {
+        return $this->hasMany(KomentarFoto::class, 'FotoID');
+    }
+
+    public function komentarsCount()
+    {
+        return $this->komentars()->count();
     }
 
     // public function likefotoss()
