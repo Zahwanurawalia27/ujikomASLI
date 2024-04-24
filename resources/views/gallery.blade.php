@@ -8,6 +8,8 @@
 			<div class="row">
 
 				<div class="row pb-3">
+
+
                     @foreach ($foto as $foto)
                     <div class="col-lg-4 mb-4">
                       <div class="card border-0 shadow-sm mb-2">

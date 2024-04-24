@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Foto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,8 +66,12 @@ class AlbumController extends Controller
     public function category(Album $album)
     {
         $album = Album::all();
-        return view('index', compact('album'))->with('album', $album);;
+        return view('index', compact('album'))->with('album', $album);
+        //return view('gallery', compact('album'))->with('album', $album);
     }
+
+    
+    
 
     /**
      * Display the specified resource.
@@ -87,7 +92,7 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
+        return view('admin.dataAlbum.editAlbum', compact('album'));
     }
 
     /**
@@ -99,7 +104,18 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        //
+        $request->validate([
+            'NamaAlbum' => 'required', 
+            'Deskripsi' => 'required',
+            'TanggalDibuat' => 'required',
+        ]);
+
+        $album->NamaAlbum = $request->NamaAlbum;
+        $album->Deskripsi = $request->Deskripsi;
+        $album->TanggalDibuat = $request->TanggalDibuat;
+        $album->save();
+    
+        return redirect('/dataAlbum')->with('success', 'Album berhasil diperbarui!');
     }
 
     /**
@@ -110,6 +126,8 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+
+        return redirect('/dataAlbum')->with('success', 'Album Berhasil Dihapus!');
     }
 }

@@ -28,9 +28,8 @@
 							<li><a href="./blog-single.html">Blog Single</a></li>
 						</ul>
 					</li> -->
-					<li>
-	
-					</li>
+					
+
 					
 				</ul>
 			</nav>

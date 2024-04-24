@@ -70,5 +70,11 @@
 	<script src="{{ asset ('assets/js/fresco.min.js') }}"></script>
 	<script src="{{ asset ('assets/js/main.js') }}"></script>
 
+	<script>
+		function filterByAlbum(albumID) {
+			window.location = "{{ route('index') }}" + "?album=" + albumID;
+		}
+	</script>
+
 	</body>
 </html>

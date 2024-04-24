@@ -66,6 +66,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/album/tambahAlbum', [AlbumController::class,'create']);
 Route::post('/album/tambahAlbum', [AlbumController::class,'store']);
 Route::get('/dataAlbum', [AlbumController::class, 'index']);
+Route::delete('/album/{album}', [AlbumController::class, 'destroy'])->name('album.destroy');
+//Route::get('/dataAlbum/editAlbum/{id}', [AlbumController::class, 'edit']);
+Route::get('/dataAlbum/editAlbum/{album}', [AlbumController::class, 'edit'])->name('album.edit');
+Route::put('/dataAlbum/update/{album}', [AlbumController::class, 'update'])->name('album.update');;
 
 // crud foto
 Route::get('/foto/tambahFoto', [FotoController::class,'create']);
@@ -90,6 +94,8 @@ Route::get('/detail/{foto}', [FotoController::class, 'show'])->name('foto.show')
 
 Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/index', [AlbumController::class, 'category'])->name('index');
+
+
 
 
 

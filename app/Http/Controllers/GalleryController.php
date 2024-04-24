@@ -13,7 +13,7 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $foto = Foto::join('albums', 'albums.AlbumID', '=', 'fotos.AlbumID')->get();
         $foto = Foto::join('users', 'users.UserID', '=', 'fotos.UserID')->get();

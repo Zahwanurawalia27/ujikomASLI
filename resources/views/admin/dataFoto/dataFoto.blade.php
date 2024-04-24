@@ -34,12 +34,12 @@
                             <form action="/dataFoto/{{$foto->FotoID}}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button class="badge bg-danger border-0" onclick="return confirm('Yakin akan dihapus?')">hapus</button>
+                                <button class="badge bg-danger btn-sm" onclick="return confirm('Yakin akan dihapus?')">hapus</button>
                             </form>
                           </td>
                           <td>
                             <a href="/dataFoto/editFoto/{{$foto->FotoID}}">
-                              <button class="badge bg-primary border-0">Edit</button>
+                              <button class="badge bg-primary btn-sm">Edit</button>
                             </a>
                           </td>
                         </tr>
